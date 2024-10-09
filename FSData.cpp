@@ -58,6 +58,17 @@ CFSData::~CFSData()
 bool CFSData::CreateSocket()
 {
     m_SocketConnected = false;
+
+    int iResult;
+
+    // Initialize Winsock
+    WSADATA wsaData;
+    iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (iResult != 0) {
+        printf("WSAStartup failed: %d\n", iResult);
+        return false;
+    }
+
     // setup socket to receive data from X-plane
     ListeningSock = socket(AF_INET, SOCK_DGRAM, 0);
     if (ListeningSock < 0)
