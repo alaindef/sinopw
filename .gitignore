@@ -1,0 +1,115 @@
+# In repository we don't need to have:
+
+#custom ADF
+files*.conf
+*.save
+
+#build directories
+[Bb]uild*\
+[Bb]uild*/
+
+#visual studio
+*.aps
+*.recipe
+*.a
+*.o
+*.so
+*.dll
+*.exe
+*.user
+*.DS_Store
+*.db
+*.log
+*.user
+*.properties
+*.config
+*.xcconfig
+*.bk
+*.bak
+*.orig
+*.zip
+*.7z
+*.7Z
+*.cache
+*.tlog
+*.gch
+*.opendb
+*.iobj
+*.obj
+*.pdb
+*.ipdb
+*.depend
+*.pc
+*.PC
+*.vs
+*.workspace
+*.pc
+* - Copy.h
+*.PRC
+*.prc
+*.FP
+*.fp
+*.pos
+*.key
+/Debug/
+/ipch/
+/packages/
+/Release/
+/x64/
+/x86/
+/AppPackages/
+/Deploy/
+/**/ARM/
+/**/ARM64/
+/**/backup/
+/**/backup2/
+/**/x64/
+/**/x86/
+/**/Debug/
+/**/Release/
+/**/build/
+/**/Generated Files/
+/**/.vs/
+/**/test/
+/**/*.tlog/
+
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# Qt-es
+
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+*build-*
+
+# QtCreator
+
+*.autosave
+
+#QtCtreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
+
+#QtCtreator CMake
+CMakeLists.txt.user
+
+#data archives
+*.zip
+*.rar

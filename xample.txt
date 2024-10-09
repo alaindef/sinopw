@@ -1,0 +1,40 @@
+// PushMatrix
+// PopMatrix
+// DrawImage sourcerect blendcolor
+// DrawLine color width
+// Textout
+// Rectangle color
+// Translate
+// Rotate
+// scissor
+// if
+// else
+// while
+DrawImage(background.png)
+// lineair vertical needle
+PushMatrix()
+    Translate(20, 100 + propeller_rpm / 100)
+    blendchannel = propeller_rpm > 2200 ? 0 : 255
+    Scissor(0, 0, 50, 220)
+    DrawImage(NeedleRPM.png, blendcolor=(255, 255, blendchannel, blendchannel)) //blendcolor in argb 
+    Scissor() // resets scissor
+PopMatrix()
+// digital readout
+txtcolor = (255, 255, 255, 255) //white
+if (propeller_rpm > 2200)
+    txtcolor = (0, 0, 0, 0) // black
+    DrawRectangle(left=20, top=300, width=50, height=20, color=(255,255,0,0))
+endif
+DrawText("%1.0f RPM", propeller_rpm, txtcolor)
+// scale
+y = 280
+while (y > 20)
+    DrawLine(points=(20, y), color=(255, 255, 255, y > 80 ? 255 : 0))
+    y = y - 50
+enqWhile
+// box
+DrawLine(points=(20,10, 20,290, 90,290, 90,10), width=2.5)
+// arrow
+leftorright = fueltankselector < 1
+Translate(20, 400)
+DrawImage(Arrows.png, sourcerect=leftorright?(0,0,50,20):(51,0,100,20))

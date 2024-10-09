@@ -1,0 +1,117 @@
+USE 'needle.png' : needle
+USE 'needlesmall.png'       : needleSmall
+USE 'alt_HM.png'            : iAlt
+USE 'carthesius128.png'     : carthesian
+USE 'VOR_13convert.png'     : heading
+USE 'VOR_11convert.png'     : rotating_compass
+USE 'VVI_2000_GA.png'       : vspng
+USE 'VVI_2000_GAred.png'   : vsredpng
+
+#create ALTITUDE instrument
+#choose position
+x = 128
+y = 312
+pushm()
+trnsm(x,y)
+drawm(iAlt, 0, 0, 128, 128)
+popm()
+
+#put small needle - on altitude
+pushm()
+pos =  Altitude * 360 /10000
+trnsm(x, y)
+rotm(pos,0,0,1)
+drawm(needleSmall, 0, 0, 128, 128)
+popm()
+
+#put large needle - on altitude
+pushm
+pos =  (Altitude REM 1000) * 0.36
+trnsm(x, y)
+rotm(pos,0,0,1)
+drawm(needle, 0, 0, 128, 128)
+popm()
+
+
+#create PITCHANGLE instrument
+#create a X-Y carthesian cross
+xp = 128
+yp = 128
+pushm()
+trnsm(xp,yp)
+drawm(carthesian, 0, 0, 128, 128)
+popm()
+
+#put a moving needle - on carthesian
+pushm()
+needlepos =  PitchAngle*10
+trnsm(xp,yp)
+rotm(needlepos,0,0,1)
+drawm(needle, 0, 0, 128, 128)
+popm()
+
+
+#create VERTICALSPEED instrument
+vs = VerticalSpeed
+vs = -200
+
+#create a blinker
+vsred = 500
+safe = 0
+ms = getms
+ms = ms % 1000
+if vs > -vsred
+    if vs < vsred
+        blinker = 0
+        safe = 1
+    fi
+fi
+if safe < 1
+    if ms < 500
+        blinker = 1
+    else
+        blinker = 0
+    fi
+fi
+
+#create a X-Y carthesian cross
+xp = 512
+yp = 128
+pushm()
+trnsm(xp,yp)
+if blinker
+    drawm(vsredpng, 0, 0, 128, 128)
+else
+    drawm(vspng, 0, 0, 128, 128)
+fi
+popm()
+
+#put a moving needle
+pushm()
+needlepos =  270 + vs/20
+trnsm(xp,yp)
+rotm(needlepos,0,0,1)
+drawm(needle, 0, 0, 128, 128)
+popm()
+
+#create HEADING instrument
+#choose position of heading instrument
+xh = 512
+yh = 312
+#create dial 3
+pushm()
+trnsm(xh, yh)
+drawm(heading, 0, 0, 128, 128)
+popm()
+
+#put moving needle - on compass  
+pushm()
+pos =  Heading
+trnsm(xh, yh)
+rotm(pos,0,0,1)
+drawm(rotating_compass, 0, 0, 128, 128)
+popm()
+
+
+endp
+

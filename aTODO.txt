@@ -1,0 +1,8 @@
+rpngenerator @ params: "// no COMMA means zero params, 1 COMMA means 2 PARAMS" not implemented 
+    (see expresion parser)
+
+remove compiler warnings
+
+
+note: sudo netstat -ntlp for ports in use
+
