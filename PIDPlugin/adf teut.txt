@@ -1,0 +1,16 @@
+
+46 struct DataFromXPlane
+{
+	char header[8];
+	float bankangle;
+};
+
+
+56 DataFromXPlane fsData;
+58 XPLMDataRef DR_BankAngle;
+
+98 strcpy(fsData.header,"PID_DTA");
+100 DR_BankAngle = XPLMFindDataRef("sim/cockpit/gyros/phi_ind_deg3"); 
+									sim/cockpit/gyros/psi_ind_degm3
+							of		sim/flightmodel/position/true_phi
+							of		sim/flightmodel/position/true_psi
